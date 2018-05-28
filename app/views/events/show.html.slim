@@ -1,0 +1,24 @@
+p#notice = notice
+
+p
+  strong Book:
+  = @event.book
+p
+  strong Address:
+  = @event.address
+p
+  strong Start at:
+  = @event.start_at
+p
+  strong Members:
+  = @event.members
+p
+  strong Allocation:
+  = @event.allocation
+p
+  strong Status:
+  = @event.status
+
+=> link_to 'Edit', edit_event_path(@event)
+'|
+=< link_to 'Back', events_path
