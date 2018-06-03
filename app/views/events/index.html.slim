@@ -6,8 +6,6 @@ table
       th Book
       th Address
       th Start at
-      th Members
-      th Allocation
       th Status
       th
       th
@@ -19,8 +17,6 @@ table
         td = event.book
         td = event.address
         td = event.start_at
-        td = event.members
-        td = event.allocation
         td = event.status
         td = link_to 'Show', event
         td = link_to 'Edit', edit_event_path(event)

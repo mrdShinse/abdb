@@ -16,14 +16,14 @@ ActiveRecord::Schema.define(version: 20180603042554) do
   enable_extension "plpgsql"
 
   create_table "events", force: :cascade do |t|
+    t.bigint "user_id"
     t.string "book"
     t.string "address"
     t.datetime "start_at"
-    t.string "members"
-    t.string "allocation"
     t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_events_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
