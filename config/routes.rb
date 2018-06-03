@@ -1,7 +1,11 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
-  root 'home#index'
+  root 'events#index'
 
   devise_for :users
 
-  resources :events
+  resources :events do
+    resources :attendances
+  end
 end
