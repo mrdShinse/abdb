@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :events do
-    resources :attendances
+    resources :attendances, only: %i[create destroy]
   end
 end

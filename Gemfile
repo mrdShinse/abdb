@@ -19,6 +19,8 @@ gem 'uglifier', '>= 1.3.0'
 
 # view
 gem 'active_decorator'
+gem 'material_icons'
+gem 'materialize-sass', '~> 1.0.0.rc1'
 gem 'slim-rails'
 
 # frontend
