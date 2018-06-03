@@ -39,6 +39,9 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# auth
+gem 'devise'
+
  # linter
 gem 'dm_linters'
 gem 'rubocop'
