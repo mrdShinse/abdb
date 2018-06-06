@@ -5,4 +5,14 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  validates :name, presence: true
+
+  def honorific_name
+    if name.present?
+      "#{name}さん"
+    else
+      '名無しさん'
+    end
+  end
 end

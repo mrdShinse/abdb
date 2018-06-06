@@ -13,3 +13,14 @@
 //= require rails-ujs
 //= require materialize
 //= require_tree .
+
+document.addEventListener('DOMContentLoaded', function() {
+  var datepicker = document.querySelectorAll('.datepicker');
+  M.Datepicker.init(datepicker, {
+    autoClode: true,
+    format: 'yyyy/mm/dd'
+  });
+
+  var timepicker = document.querySelectorAll('.timepicker');
+  M.Timepicker.init(timepicker, {});
+});

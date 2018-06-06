@@ -1,0 +1,27 @@
+.row
+  .col.s12.m12
+    .card
+      .card-content
+        span.card-title ユーザー作成
+        = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+          = devise_error_messages!
+          .input-field
+            = f.label :name
+            = f.text_field :name, autofocus: true, autocomplete: :name
+          .input-field
+            = f.label :email
+            = f.email_field :email, autocomplete: :email
+          .input-field
+            = f.label :password
+            / - if @minimum_password_length
+              em
+                | (
+                = @minimum_password_length
+                |  characters minimum)
+            = f.password_field :password, autocomplete: "off"
+          .input-field
+            = f.label :password_confirmation
+            = f.password_field :password_confirmation, autocomplete: "off"
+          .card-action
+            => f.submit 'ユーザー作成', class: 'waves-effect waves-light btn'
+            = render "devise/shared/links"

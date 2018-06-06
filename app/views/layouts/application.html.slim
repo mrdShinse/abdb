@@ -7,10 +7,18 @@ html
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
   body
-  nav
-    .nav-wrapper
-      = link_to 'ABDB', root_path, class: 'brand-logo center'
-      ul#nav-mobile.right.hide-on-med-and-down
-        li
-          = link_to 'イベント作成', new_event_path
-    = yield
+    nav
+      .nav-wrapper
+        = link_to 'ABDB', root_path, class: 'brand-logo center'
+        ul#nav-mobile.right.hide-on-med-and-down
+          li
+            - if user_signed_in?
+              = link_to 'イベント作成', new_event_path
+            - else
+              => link_to 'ログインしてイベント作成', new_user_session_path
+
+    p#error = flash[:error]
+    p#notice = flash[:notice]
+
+    .container
+      = yield

@@ -1,18 +1,40 @@
-p#notice = notice
+.row
+  .col.s12.m12
+    .card
+      .card-content
+        span.card-title
+          = @event.book
+        .event-address
+          strong @
+          = @event.address
 
-p
-  strong Book:
-  = @event.book
-p
-  strong Address:
-  = @event.address
-p
-  strong Start at:
-  = @event.start_at
-p
-  strong Status:
-  = @event.status
+        .event-start-at
+          strong Start at:
+          = @event.start_at
 
-=> link_to 'Edit', edit_event_path(@event)
-'|
-=< link_to 'Back', events_path
+        table
+          thead
+            tr
+              th 主催者
+          tbody
+            tr
+              td = @event.user.honorific_name
+
+        hr
+
+        table
+          thead
+            tr
+              th 参加者
+          tbody
+            - @event.attendances.each do |attendance|
+              tr
+                td = attendance.user_honorific_name
+
+      .card-action
+        - if @event.user == current_user
+          => link_to '編集', edit_event_path(@event)
+        - elsif user_signed_in?
+          => link_to '参加する', event_attendances_path(@event, { attendance: { user_id: current_user.id }}), method: :post, format: :json
+        - else
+          => link_to 'ログインして参加する', new_user_session_path

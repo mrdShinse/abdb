@@ -6,16 +6,19 @@
         - @event.errors.full_messages.each do |message|
           li = message
 
-  .field
-    = f.label :book
-    = f.text_field :book
-  .field
-    = f.label :address
-    = f.text_field :address
-  .field
-    = f.label :start_at
-    = f.datetime_select :start_at
-  .field
-    = f.label :status
-    = f.number_field :status
-  .actions = f.submit
+  .row
+    .col.s12
+      .input-field
+        = f.label :book, class: 'validate'
+        = f.text_field :book
+  .row
+    .col.s12
+      .input-field
+        = f.label :address
+        = f.text_field :address
+  .row
+    .col.s6
+      = f.label :start_at
+      = f.datetime_local_field :start_at
+  .actions
+    = f.submit @event.persisted? ? '更新' : '作成', class: 'waves-effect waves-light btn'
